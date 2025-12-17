@@ -28,6 +28,7 @@ export default class TransformVideoElement extends HTMLElement {
 
   connectedCallback () {
     console.assert(this.#videoElem, '<video> element not found');
+    delay(() => console.assert(this.#videoElem.src, 'Missing <video> source'));
 
     this.attachShadow({ mode: 'open' });
     this.#canvas.original = this.#createCanvasElement(true);
@@ -135,4 +136,8 @@ export default class TransformVideoElement extends HTMLElement {
       }
     }
   }
+}
+
+function delay (callbackFn, delayMS = 250) {
+  setTimeout(() => callbackFN(), delayMS);
 }

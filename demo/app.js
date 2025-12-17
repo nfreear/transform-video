@@ -1,13 +1,8 @@
-import ENV from 'ENV';
 import TransformVideoElement from 'TransformVideoElement';
 
 window.customElements.define('transform-video', TransformVideoElement);
 
 const videoEl = document.querySelector('#video');
-
-console.debug('ENV:', ENV);
-
-videoEl.src = ENV.videoSrc;
 
 videoEl.addEventListener('command', (ev) => {
   if (ev.command === '--play-pause') {
@@ -15,3 +10,11 @@ videoEl.addEventListener('command', (ev) => {
   }
   console.debug('command:', ev.command, ev);
 });
+
+if (/\?env/.test(import.meta.url)) {
+  import('ENV').then(({ default: ENV}) => {
+    console.debug('ENV:', ENV);
+
+    videoEl.src = ENV.videoSrc;
+  });
+}
