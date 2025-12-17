@@ -138,6 +138,6 @@ export default class TransformVideoElement extends HTMLElement {
   }
 }
 
-function delay (callbackFn, delayMS = 250) {
+function delay (callbackFN, delayMS = 250) {
   setTimeout(() => callbackFN(), delayMS);
 }

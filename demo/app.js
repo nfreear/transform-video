@@ -12,7 +12,7 @@ videoEl.addEventListener('command', (ev) => {
 });
 
 if (/\?env/.test(import.meta.url)) {
-  import('ENV').then(({ default: ENV}) => {
+  import('ENV').then(({ default: ENV }) => {
     console.debug('ENV:', ENV);
 
     videoEl.src = ENV.videoSrc;
