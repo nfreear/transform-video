@@ -1,0 +1,26 @@
+# https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
+name: Lint
+
+on: [push, pull_request]
+# See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+env:
+  NODE_VERSION: 24
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        check-latest: true
+        # cache: 'npm'
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run build --if-present
+    - run: npm test --if-present
+
+# End.

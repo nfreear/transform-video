@@ -1,7 +1,7 @@
 import ENV from 'ENV';
 import TransformVideoElement from 'TransformVideoElement';
 
-customElements.define('transform-video', TransformVideoElement);
+window.customElements.define('transform-video', TransformVideoElement);
 
 const videoEl = document.querySelector('#video');
 

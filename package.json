@@ -1,6 +1,11 @@
 {
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "src/TransformVideoElement.js",
+    "./app": "demo/app.js",
+    "./style": "demo/style.css"
+  },
   "devDependencies": {
     "eslint": "^9.39.2",
     "neostandard": "^0.12.2",
