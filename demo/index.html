@@ -1,68 +1,23 @@
 <!doctype html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-  :root {
-    --orig-width: 1280px;
-    --orig-height: 1440px;
+<link rel="stylesheet" href="style.css">
 
-    --video-height: 24rem;
-  }
+<title> Split video demo </title>
 
-  /* 313 x 352 px */
-  video {
-    max-height: var(--video-height);
-  }
+<h1> Split video demo </h1>
 
-  .para {
-    margin: 1rem 0;
-  }
+<p>
+  <button commandfor="video" command="--play-pause">Play video</button>
+</p>
 
-  transform-video {
-    display: inline-block;
-    margin-right: 1rem;
-    /* border: 1px solid silver;
-    margin: 1rem 0;
-    padding: 1rem; */
-
-    &::part(canvas) {
-      background: #eee;
-      border: 1px solid silver;
-      border-radius: .2rem;
-      display: inline-block;
-      margin: 1rem 0;
-
-      X_width: 313px;
-      X_height: 352px;
-      max-height: var(--video-height);
-    }
-
-    &::part(splitCanvas) {
-      height: calc(var(--video-height) / 2);
-    }
-
-    &::part(original) {
-      display: none;
-    }
-
-    &[ split ]::before {
-      display: block;
-    }
-
-    &[ split = bottom ]::before {
-      content: 'bottom';
-    }
-
-    &[ split = top ]::before {
-      content: 'top';
-    }
-  }
-</style>
-
-
-<video id="video" controls crossorigin="anonymous">
+<details>
+  <summary>Original video</summary>
+  <video id="video" controls crossorigin="anonymous">
   <p>Loading video...</p>
-</video>
+  </video>
+</details>
 
 <div class="para">
 
@@ -86,17 +41,6 @@
 }
 </script>
 
-<script type="module">
-  import ENV from 'ENV';
-  import TransformVideoElement from 'TransformVideoElement';
-
-  customElements.define('transform-video', TransformVideoElement);
-
-  const videoElem = document.querySelector('#video');
-
-  console.debug('ENV:', ENV);
-
-  videoElem.src = ENV.videoSrc;
-</script>
+<script type="module" src="app.js"></script>
 
 </html>

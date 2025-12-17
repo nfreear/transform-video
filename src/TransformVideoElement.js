@@ -15,6 +15,8 @@ export default class TransformVideoElement extends HTMLElement {
 
   get #videoSelector () { return this.getAttribute('video-selector') ?? 'video'; }
 
+  get #debug () { return this.hasAttribute('debug'); }
+
   get #videoElem () { return document.querySelector(this.#videoSelector); }
 
   get #videoHeight () { return this.#videoElem.videoHeight; }
@@ -47,9 +49,10 @@ export default class TransformVideoElement extends HTMLElement {
     const canvasElem = document.createElement('canvas');
 
     canvasElem.setAttribute('part', `canvas ${PART}`);
-    /* if (isOriginal) {
+
+    if (isOriginal && !this.#debug) {
       canvasElem.setAttribute('hidden', '');
-    } */
+    }
 
     this.shadowRoot.appendChild(canvasElem);
     return canvasElem;
@@ -105,21 +108,9 @@ export default class TransformVideoElement extends HTMLElement {
       // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData
       this.#ctx2.putImageData(transFrame, 0, 0, 0, 0, this.#videoWidth, this.#videoHeight / 2);
     }
-
-    /* const data = frame.data;
-
-    for (let i = 0; i < data.length; i += 4) {
-      const red = data[i + 0];
-      const green = data[i + 1];
-      const blue = data[i + 2];
-      if (green > 100 && red > 100 && blue < 43) {
-        data[i + 3] = 0;
-      }
-    }
-    this.ctx2.putImageData(frame, 0, 0); */
   }
 
-  // // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData
+  // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData
   #putImageData_NotInUse (
     ctx,
     imageData,
@@ -128,10 +119,10 @@ export default class TransformVideoElement extends HTMLElement {
     dirtyX = 0,
     dirtyY = 0,
     dirtyWidth = imageData.width,
-    dirtyHeight = imageData.height,
+    dirtyHeight = imageData.height
   ) {
     const data = imageData.data;
-    const height = imageData.height;
+    // const height = imageData.height;
     const width = imageData.width;
     const limitBottom = dirtyY + dirtyHeight;
     const limitRight = dirtyX + dirtyWidth;
