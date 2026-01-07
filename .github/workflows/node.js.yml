@@ -1,5 +1,5 @@
 # https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
-name: Lint
+name: Node.js
 
 on: [push, pull_request]
 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/

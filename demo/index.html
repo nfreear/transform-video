@@ -9,6 +9,10 @@
 
 <h1> Split video demo </h1>
 
+<p>Demonstration of using the <a href="https://github.com/nfreear/transform-video"
+  ><code>&lt;transform-video></code></a> custom element.
+</p>
+
 <p>
   <button commandfor="video" command="--play-pause">Play video</button>
 </p>
@@ -16,7 +20,7 @@
 <details>
   <summary>Original video</summary>
   <video id="video" controls crossorigin="anonymous">
-  <p>Loading video...</p>
+    <p>Loading video...</p>
   </video>
 </details>
 
@@ -37,7 +41,7 @@
 {
   "imports": {
     "ENV": "../env.js",
-    "TransformVideoElement": "../src/TransformVideoElement.js"
+    "transform-video": "../src/TransformVideoElement.js"
   }
 }
 </script>

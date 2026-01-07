@@ -1,11 +1,17 @@
 {
   "private": true,
+  "name": "transform-video",
+  "version": "0.8.0",
   "type": "module",
   "exports": {
     ".": "src/TransformVideoElement.js",
     "./app": "demo/app.js",
-    "./style": "demo/style.css"
+    "./style": "demo/style.css",
+    "./style.css": "demo/style.css"
   },
+  "sideEffects": [
+    "src/style.css"
+  ],
   "devDependencies": {
     "eslint": "^9.39.2",
     "neostandard": "^0.12.2",
@@ -14,5 +20,12 @@
   "scripts": {
     "lint": "npx eslint",
     "start": "npx servor"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfreear/transform-video.git"
+  },
+  "description": "A custom element to manipulate video using `<canvas>`",
+  "license": "MIT",
+  "author": "Nick Freear"
 }
